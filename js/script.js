@@ -23,7 +23,8 @@ var sec2_img = document.querySelector('.sec2-hero .product-img img');
 var sec2_card_h3 = document.querySelector('.sec2-hero .card-inner h3');
 var sec2_card_p = document.querySelector('.sec2-hero .card-inner p');
 tween_sec2_hero
-    .to(sec2_white_cover, 1.2, { x: '-100%', ease: Power3.easeOut }, 'Start')
+    .to(sec2_img, 0.1, { visibility: "visible"})
+    .to(sec2_white_cover, 1.2, { x: '-100%', ease: Power3.easeOut }, 'Start')    
     .from(sec2_img, 1.3, { scale: 1.6, ease: Power3.easeOut }, 0.2);
 tween_sec2_hero
     .from(sec2_card_h3, 1.2, { x: -60, ease: Power3.easeOut }, 'Start')
@@ -46,7 +47,7 @@ var sec3_p = document.querySelector('.sec3 .container p');
 
 tween_sec3
     .from(sec3_img01_frame, 1.2, { y: 1280, ease: Power3.easeOut }, 'Start')
-    .from(sec3_img01_img, 2, { scale: 1.6, ease: Power3.easeOut }, 0.2)
+    .from(sec3_img01_img, 2, { scale: 1.6 , ease: Power3.easeOut,  }, 0.2)
     .from(sec3_img02_frame, 1.2, { y: 1280, ease: Power3.easeOut }, 0.2)
     .from(sec3_img02_img, 2, { scale: 1.6, ease: Power3.easeOut }, 0.2);
 tween_sec3

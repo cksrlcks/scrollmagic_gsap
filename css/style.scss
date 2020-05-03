@@ -129,13 +129,14 @@ header {
                 top: 50px;
                 transform: translate(-50%);
                 overflow: hidden;
-                img {
+                img {                    
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
                     width: 100%;
+                    visibility:hidden;
                 }
             }
         }
