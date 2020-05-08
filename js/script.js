@@ -71,7 +71,7 @@ tween_sec4
     .from(sec4_img, 1.6, { scale: 1.4, ease: Power3.easeOut, delay: -1.5 });
 
 tween_sec4
-    .staggerFrom(sec4_h3, 1, { y: 60, ease: Power3.easeOut, delay: 0.8 }, 0.15, 'Start', '-=0.2')
+    .staggerFrom(sec4_h3, 1, { y: 60, ease: Power3.easeOut, delay: 0.8 }, 0.15, 'Start')
     .from(sec4_p, 1, { y: 20, opacity: 0, ease: Power3.easeOut }, 1.4);
 
 new ScrollMagic.Scene({
@@ -89,3 +89,43 @@ document.addEventListener('scroll', function () {
     hero01.style.width = 100 + window.pageYOffset / 30 + '%';
     hero02.style.width = 100 + window.pageYOffset / 30 + '%';
 });
+
+var menu_icon = document.querySelector('header .menu');
+var menu_screen = document.querySelector('.menu-screen');
+var menu_close = document.querySelector('.menu-screen .close');
+var body = document.querySelector('body')
+
+var menu_sence_open = new TimelineLite({
+    onReverseComplete: function(){
+        menu_screen.classList.remove('on');
+        menu_icon.classList.remove('on');
+        //body.classList.remove('lock');
+    },
+    paused: true
+});
+var screen_bg = document.querySelectorAll('.menu-screen .bg');
+var menu_item = document.querySelectorAll('.menu-screen .menu-list li a');
+menu_sence_open.staggerFrom(screen_bg, 1, {y: '100%', ease: Power3.easeOut}, 0.1)
+.staggerFrom(menu_item, 1, {y: 60, opacity:0, ease: Power3.easeOut}, 0.1, '-=0.8')
+.from(menu_close,1, {opacity:0, ease: Power3.easeOut}, '-=0.8')
+
+
+menu_icon.addEventListener('click', function(e){
+    e.preventDefault();
+    if(this.classList.contains('on')){        
+        return;
+    }
+    this.classList.add('on');
+    disableScroll();
+    menu_screen.classList.add('on');
+    menu_sence_open.play().timeScale(1);
+
+})
+
+menu_close.addEventListener('click', function(e){
+    e.preventDefault();
+    menu_sence_open.timeScale(2).reverse();
+    enableScroll();
+
+})
+
